@@ -1,4 +1,3 @@
-// src/pages/LoginPage.js
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
@@ -31,7 +30,6 @@ export default function LoginPage() {
       });
       login(res.data.token, res.data.user);
 
-// 🔥 AUTHENTICATE SOCKET PROPERLY
 socket.auth = { token: res.data.token };
 socket.connect();
 
@@ -52,12 +50,10 @@ navigate('/home');
         {err && <div className="login-error">{err}</div>}
 
         <form onSubmit={handleSubmit} className="login-form">
-          {/* Email */}
           <div className="login-field-group">
             <label className="login-label">Email Address</label>
             <div className="login-input-wrapper">
               <span className="login-input-icon">
-                {/* simple mail icon using SVG path */}
                 <svg
                   width="16"
                   height="16"
@@ -81,7 +77,6 @@ navigate('/home');
             </div>
           </div>
 
-          {/* Password */}
           <div className="login-field-group">
             <label className="login-label">Password</label>
             <div className="login-input-wrapper">
@@ -121,7 +116,6 @@ navigate('/home');
       />
     </svg>
   ) : (
-    /* normal eye icon */
     <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
       <path
         fill="currentColor"
@@ -135,15 +129,12 @@ navigate('/home');
 
             </div>
           </div>
-
-          {/* Gradient Sign In button */}
           <button type="submit" className="login-primary-btn">
             Log In
           </button>
           <br></br>
         </form>
 
-        {/* Bottom text */}
         <div className="login-bottom-text">
           Don&apos;t have an account?{' '}
           <Link to="/signup">Sign up</Link>
