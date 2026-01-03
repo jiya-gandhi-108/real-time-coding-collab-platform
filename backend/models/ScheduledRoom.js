@@ -1,4 +1,3 @@
-// backend/models/ScheduledRoom.js
 const mongoose = require('mongoose');
 
 const scheduledRoomSchema = new mongoose.Schema({
