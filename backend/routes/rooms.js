@@ -1,4 +1,3 @@
-// backend/routes/rooms.js
 const express = require('express');
 const { v4: uuidv4 } = require('uuid');
 const auth = require('../middleware/auth');
@@ -7,7 +6,6 @@ const ScheduledRoom = require('../models/ScheduledRoom');
 
 const router = express.Router();
 
-// helper to limit recentRooms to 6
 async function addRecentRoom(userId, { roomId, projectName, files = [] }) {
   const user = await User.findById(userId);
   if (!user) return;
@@ -22,7 +20,6 @@ async function addRecentRoom(userId, { roomId, projectName, files = [] }) {
   await user.save();
 }
 
-// POST /api/rooms/create  { projectName, customRoomId? }
 router.post('/create', auth, async (req, res) => {
   try {
     const { projectName, customRoomId } = req.body;
@@ -34,9 +31,6 @@ router.post('/create', auth, async (req, res) => {
       ? customRoomId.trim()
       : uuidv4().slice(0, 8);
 
-    // here you already have your in-memory rooms map in server.js,
-    // so just return data; Socket.IO will actually create the room when user joins.
-
     await addRecentRoom(req.user.id, { roomId, projectName, files: [] });
 
     res.json({ roomId, projectName });
@@ -46,7 +40,6 @@ router.post('/create', auth, async (req, res) => {
   }
 });
 
-// POST /api/rooms/schedule { projectName, scheduledAt, customRoomId? }
 router.post('/schedule', auth, async (req, res) => {
   try {
     const { projectName, scheduledAt, customRoomId } = req.body;
@@ -74,7 +67,6 @@ router.post('/schedule', auth, async (req, res) => {
   }
 });
 
-// GET /api/rooms/scheduled
 router.get('/scheduled', auth, async (req, res) => {
   try {
     const list = await ScheduledRoom.find({ owner: req.user.id })
@@ -86,7 +78,6 @@ router.get('/scheduled', auth, async (req, res) => {
   }
 });
 
-// GET /api/rooms/recent
 router.get('/recent', auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select('recentRooms');
