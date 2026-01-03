@@ -3,10 +3,10 @@ const http = require('http');
 const { Server } = require('socket.io');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const jwt = require('jsonwebtoken'); // 👈 ADD THIS
+const jwt = require('jsonwebtoken'); 
 require('dotenv').config();
 
-const User = require('./models/User'); // 👈 ADD THIS
+const User = require('./models/User'); 
 const authRoutes = require('./routes/auth');
 const roomRoutes = require('./routes/rooms');
 const socketAuth = require("./socketAuth");
@@ -29,13 +29,12 @@ const io = new Server(server, {
 
 const rooms = new Map();
 
-// 👈 JWT AUTH MIDDLEWARE - Gets real user.name from MongoDB
 const authenticateSocket = async (socket, next) => {
   try {
     const token = socket.handshake.auth?.token;
     
     if (!token) {
-      socket.data.userName = 'Guest'; // Fallback only
+      socket.data.userName = 'Guest'; 
       return next();
     }
 
@@ -43,7 +42,7 @@ const authenticateSocket = async (socket, next) => {
     const user = await User.findById(decoded.userId).select('name');
     
     if (user) {
-      socket.data.userName = user.name; // ✅ REAL MongoDB name
+      socket.data.userName = user.name; 
       socket.data.userId = decoded.userId;
       console.log(`✅ Authenticated: ${user.name} (${socket.id})`);
     } else {
@@ -69,9 +68,8 @@ io.on('connection', (socket) => {
   socket.on('join-room', ({ roomId, isAdmin = false, projectName }) => {
     if (!roomId) return;
 
-    const userName = socket.data.userName; // ✅ From MongoDB or 'Guest'
+    const userName = socket.data.userName; 
 
-    // ✅ FIXED: Project folder → main.js structure
     if (!rooms.has(roomId)) {
       const projectFolder = projectName || roomId;
       rooms.set(roomId, {
@@ -109,7 +107,7 @@ io.on('connection', (socket) => {
     room.users = room.users.filter(u => u.id !== socket.id);
     room.users.push({ id: socket.id, name: userName, isAdmin: socket.isAdmin });
 
-    socket.to(roomId).emit('user-joined', { userName }); // ✅ Real name
+    socket.to(roomId).emit('user-joined', { userName }); 
     io.to(roomId).emit('user-list', room.users);
 
     socket.emit('room-data', {
@@ -124,20 +122,17 @@ io.on('connection', (socket) => {
     });
   });
 
-  // 👈 user-editing: Use MongoDB name
   socket.on('user-editing', ({ roomId }) => {
-    const userName = socket.data.userName; // ✅ From MongoDB
-    socket.to(roomId).emit('user-editing', { userName }); // Only to others
+    const userName = socket.data.userName; 
+    socket.to(roomId).emit('user-editing', { userName }); 
   });
 
-  // 👈 leave-room handler (was missing)
   socket.on('leave-room', ({ roomId }) => {
     const userName = socket.data.userName;
     socket.to(roomId).emit('user-left', { userName });
     socket.leave(roomId);
   });
 
-  // ✅ FIXED: Folder creation (adds to root)
   socket.on('create-folder', ({ roomId, path }) => {
     if (!rooms.has(roomId)) return;
     const room = rooms.get(roomId);
@@ -158,7 +153,6 @@ io.on('connection', (socket) => {
     });
   });
 
-  // ✅ FIXED: File creation with proper folder path matching
   socket.on('create-file', ({ roomId, path }) => {
     if (!rooms.has(roomId)) return;
     const room = rooms.get(roomId);
@@ -222,7 +216,7 @@ io.on('connection', (socket) => {
 
   socket.on('chat-message', ({ roomId, message }) => {
     io.to(roomId).emit('new-message', {
-      userName: socket.data.userName || 'Anonymous', // ✅ MongoDB name
+      userName: socket.data.userName || 'Anonymous', 
       message: message.trim(),
       timestamp: new Date().toISOString(),
     });
