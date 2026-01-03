@@ -20,7 +20,7 @@ const debounce = (fn, delay) => {
 
 export default function Room({
   roomId: propRoomId,
-  userName, // ⚠️ Only used by Chat UI, NOT for auth or room events
+  userName, 
   projectName,
   isAdmin = false,
 }) {
@@ -99,13 +99,11 @@ export default function Room({
 
     socket.on('user-list', (us) => setName(us || []));
 
-    // ✅ REAL MongoDB name
     socket.on('user-editing', ({ users }) => {
       setEditingUser(users);
       resetEditingUserTimeout();
     });
 
-    // ✅ REAL MongoDB users
     socket.on('user-joined', ({ users }) => {
       addStripNotification(`${users} joined the room`);
     });
@@ -133,7 +131,6 @@ export default function Room({
 
       emitCodeChange(activeFile, code);
 
-      // ✅ Server already knows who is editing
       socket.emit('user-editing', { roomId: propRoomId });
     },
     [activeFile, emitCodeChange, propRoomId]
