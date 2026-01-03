@@ -1,4 +1,3 @@
-// backend/routes/auth.js
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -7,7 +6,6 @@ const auth = require('../middleware/auth');
 
 const router = express.Router();
 
-// POST /api/auth/signup
 router.post('/signup', async (req, res) => {
   try {
     const { email, password, name } = req.body;
@@ -43,7 +41,6 @@ router.post('/signup', async (req, res) => {
   }
 });
 
-// POST /api/auth/login
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -83,7 +80,6 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// GET /api/auth/me
 router.get('/me', auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select('-password');
