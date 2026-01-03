@@ -10,7 +10,6 @@ export default function Editor({ code = '', language = 'javascript', onChange, o
     editorRef.current = editor;
     monacoRef.current = monaco;
 
-    // Safe cursor position updates
     editor.onDidChangeCursorPosition(() => {
       if (!editorRef.current || !onCursorChange) return;
       const position = editorRef.current.getPosition();
@@ -19,7 +18,6 @@ export default function Editor({ code = '', language = 'javascript', onChange, o
       }
     });
 
-    // SAFE: Initial decorations with null check
     updateCursorDecorations();
   }, [onCursorChange]);
 
@@ -28,7 +26,6 @@ export default function Editor({ code = '', language = 'javascript', onChange, o
 
     const monaco = monacoRef.current;
     
-    // CRITICAL FIX: SAFE Object.entries with null check
     const safeCursors = cursors || {};
     const cursorEntries = Object.entries(safeCursors);
     
@@ -56,14 +53,12 @@ export default function Editor({ code = '', language = 'javascript', onChange, o
     );
   }, [cursors]);
 
-  // SAFE effect with dependency null checks
   useEffect(() => {
     if (editorRef.current && monacoRef.current) {
       updateCursorDecorations();
     }
   }, [cursors, updateCursorDecorations]);
 
-  // Safe cleanup
   useEffect(() => {
     return () => {
       if (editorRef.current && decorationsRef.current) {
