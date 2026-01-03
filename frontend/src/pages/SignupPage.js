@@ -1,4 +1,3 @@
-// src/pages/SignupPage.js
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
@@ -69,7 +68,6 @@ export default function SignupPage() {
             </div>
           </div>
 
-          {/* Email */}
           <div className="login-field-group">
             <label className="login-label">Email Address</label>
             <div className="login-input-wrapper">
@@ -97,7 +95,6 @@ export default function SignupPage() {
             </div>
           </div>
 
-          {/* Password */}
           <div className="login-field-group">
             <label className="login-label">Password</label>
             <div className="login-input-wrapper">
@@ -126,7 +123,6 @@ export default function SignupPage() {
             </div>
           </div>
 
-          {/* Primary button */}
           <button type="submit" className="login-primary-btn">
             Sign Up
           </button>
