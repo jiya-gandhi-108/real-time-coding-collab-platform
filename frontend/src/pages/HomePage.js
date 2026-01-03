@@ -1,4 +1,3 @@
-// src/pages/JoinRoomPage.js
 import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -6,7 +5,7 @@ import '../styles/home.css';
 import { AuthContext } from '../authContext';
 
 export default function JoinRoomPage() {
-  const { user, token, logout } = useContext(AuthContext); // make sure logout exists in context
+  const { user, token, logout } = useContext(AuthContext); 
   const navigate = useNavigate();
 
   const [joinRoomId, setJoinRoomId] = useState('');
@@ -17,12 +16,10 @@ export default function JoinRoomPage() {
   const [scheduledRooms, setScheduledRooms] = useState([]);
   const [recentActivity, setRecentActivity] = useState([]);
 
-  // schedule modal state
   const [showScheduleForm, setShowScheduleForm] = useState(false);
   const [scheduleProjectName, setScheduleProjectName] = useState('');
   const [scheduleDateTime, setScheduleDateTime] = useState('');
 
-  // profile menu state
   const [showMenu, setShowMenu] = useState(false);
 
   const avatarLetter =
@@ -34,7 +31,6 @@ export default function JoinRoomPage() {
     headers: { Authorization: `Bearer ${token}` },
   };
 
-  // load scheduled + recent
   useEffect(() => {
     if (!token) return;
 
@@ -54,7 +50,6 @@ export default function JoinRoomPage() {
     load();
   }, [token]);
 
-  // CREATE ROOM
   const handleCreateClick = async () => {
     if (!projectNameCreate.trim()) return;
 
@@ -71,7 +66,6 @@ export default function JoinRoomPage() {
 
       const { roomId, projectName } = res.data;
 
-      // update recent activities from server (GET) to be safe
       const recentRes = await axios.get(
         'http://localhost:5000/api/rooms/recent',
         authHeader
@@ -84,7 +78,6 @@ export default function JoinRoomPage() {
     }
   };
 
-  // JOIN EXISTING ROOM manually (not scheduled)
   const handleJoinClick = () => {
     if (!joinRoomId.trim()) return;
     navigate(`/room/${joinRoomId.trim()}`, {
@@ -92,7 +85,6 @@ export default function JoinRoomPage() {
     });
   };
 
-  // SCHEDULE ROOM
   const handleScheduleRoom = async () => {
     if (!scheduleProjectName.trim() || !scheduleDateTime) return;
 
@@ -101,7 +93,7 @@ export default function JoinRoomPage() {
         'http://localhost:5000/api/rooms/schedule',
         {
           projectName: scheduleProjectName.trim(),
-          scheduledAt: scheduleDateTime, // datetime-local value
+          scheduledAt: scheduleDateTime, 
         },
         authHeader
       );
@@ -123,15 +115,12 @@ export default function JoinRoomPage() {
   const canJoinScheduled = (scheduledAt) =>
     new Date(scheduledAt).getTime() <= Date.now();
 
-  // LOGOUT
   const handleLogout = () => {
-    // clear local storage / token as per your app
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-    // localStorage.clear(); // if you only store auth stuff
 
     if (logout) {
-      logout(); // clear auth in context too
+      logout(); 
     }
 
     navigate('/login', { replace: true });
@@ -139,7 +128,6 @@ export default function JoinRoomPage() {
 
   return (
     <div className="jr-root">
-      {/* MAIN */}
       <div className="jr-main">
         <header className="jr-topbar">
           <div className="jr-topbar-left">
@@ -186,7 +174,6 @@ export default function JoinRoomPage() {
             </div>
           </section>
 
-          {/* SCHEDULE + SCHEDULED CARD */}
           <section className="jr-card-row">
             <div className="jr-card jr-card-wide">
               <h2 className="jr-card-title">Schedule a room</h2>
@@ -312,7 +299,6 @@ export default function JoinRoomPage() {
             </div>
           </section>
 
-          {/* JOIN + CREATE */}
           <section className="jr-card-row">
             <div className="jr-card jr-card-half">
               <h3 className="jr-card-title">Join a room</h3>
@@ -399,7 +385,6 @@ export default function JoinRoomPage() {
             </div>
           </section>
 
-          {/* RECENT ACTIVITY */}
           <section className="jr-card-row">
             <div className="jr-card jr-card-wide">
               <h3 className="jr-card-title">Recent activity</h3>
