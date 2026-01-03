@@ -1,4 +1,3 @@
-// src/components/Chat.js
 import React, { useEffect, useState } from 'react';
 import { socket } from '../socket';
 
@@ -6,7 +5,6 @@ export default function Chat({ roomId, userName }) {
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
 
-  // listen for incoming messages
   useEffect(() => {
     if (!roomId || !userName) return;
 
@@ -34,9 +32,7 @@ export default function Chat({ roomId, userName }) {
       createdAt: Date.now(),
     };
 
-    // emit to server
     socket.emit('chat-message', msg);
-    // also push locally so sender sees immediately
     setMessages((prev) => [...prev, msg]);
     setMessage('');
   };
