@@ -17,7 +17,6 @@ body,
     Roboto, sans-serif;
 }
 
-/* ─── TOP STRIP ───────────────────────────────────── */
 .room-strip {
   height: 52px;
   min-height: 52px;
@@ -47,7 +46,6 @@ body,
   font-size: 16px;
   margin-right: 8px;
 }
-/* 🚨 PERFECT Red Leave Button - Top Right Corner */
 .leave-room-btn {
   position: fixed;
   top: 10px;
@@ -130,7 +128,6 @@ body,
   color: #022c22;
 }
 
-/* ─── SIMPLIFIED 2-COLUMN GRID ───────────────────── */
 .room-body {
   flex: 1;
   display: grid;
@@ -140,7 +137,6 @@ body,
   overflow: hidden;
 }
 
-/* ─── LEFT SIDEBAR ──────────────────────────────── */
 .room-sidebar {
   background: #020617;
   border-right: 1px solid #111827;
@@ -162,7 +158,6 @@ body,
   padding-right: 4px;
 }
 
-/* Tree styles */
 .tree-root {
   flex: 1;
   overflow-y: auto;
@@ -191,19 +186,16 @@ body,
 
 .folder-arrow { font-size: 11px; }
 
-/* HIDE ALL CHILDREN BY DEFAULT */
 .tree-children {
   display: none !important;
   padding-left: 16px;
   margin-top: 2px;
 }
 
-/* ONLY SHOW EXPANDED FOLDERS */
 .tree-folder.expanded .tree-children {
   display: block !important;
 }
 
-/* ROOT ALWAYS EXPANDED */
 .tree-root > .tree-folder {
   display: block !important;
 }
@@ -212,8 +204,6 @@ body,
   display: block !important;
 }
 
-
-/* ─── EDITOR ──────────────────────────────────────── */
 .room-editor-area {
   background: #020617;
   display: flex;
@@ -265,7 +255,6 @@ body,
   box-sizing: border-box;
 }
 
-/* ─── CHAT OVERLAY - MONACO-PROOF Z-INDEX ─────────── */
 .room-chat-overlay {
   position: fixed !important;
   top: 52px !important;
@@ -290,7 +279,6 @@ body,
   transform: translateX(0) !important;
 }
 
-/* FORCE CHAT CHILDREN ABOVE EVERYTHING */
 .room-chat-overlay,
 .room-chat-overlay *,
 .room-chat-overlay::before,
@@ -298,7 +286,6 @@ body,
   z-index: 2147483647 !important;
 }
 
-/* Chat inner styles */
 .room-chat-overlay .chat { 
   display: flex !important; 
   flex-direction: column !important; 
@@ -405,7 +392,6 @@ body,
   background: #1177bb !important; 
 }
 
-/* ─── EDITING POPUP ───────────────────────────────── */
 .editing-popup-strip-style {
   position: fixed;
   bottom: 16px;
@@ -419,10 +405,9 @@ body,
   align-items: center;
   font-size: 13px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
-  z-index: 2147483646; /* Below chat but above everything else */
+  z-index: 2147483646; 
 }
 
-/* ─── RESPONSIVE ───────────────────────────────────── */
 @media (max-width: 1024px) {
   .room-body { grid-template-columns: 220px 1fr; }
   .room-chat-overlay { width: 300px; }
