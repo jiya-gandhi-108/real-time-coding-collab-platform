@@ -1,6 +1,3 @@
-/* src/styles/login.css */
-
-/* Reset */
 *,
 *::before,
 *::after {
@@ -12,11 +9,10 @@
 body {
   font-family: system-ui, -apple-system, "SF Pro Text", "Segoe UI", Roboto,
     sans-serif;
-  background: #02050a; /* pure dark */
+  background: #02050a; 
   color: #f9fafb;
 }
 
-/* Page wrapper */
 .login-page {
   min-height: 100vh;
   display: flex;
@@ -28,8 +24,6 @@ body {
   background: radial-gradient(circle at top, #1f2937 0, #050c2e 55%);
 }
 
-
-/* Main card */
 .login-card {
   width: 100%;
   max-width: 460px;
@@ -42,7 +36,6 @@ body {
     0 0 0 1px rgba(31, 41, 55, 0.85);
 }
 
-/* Header */
 .login-header-title {
   font-size: 28px;
   font-weight: 700;
@@ -58,7 +51,6 @@ body {
   margin-bottom: 26px;
 }
 
-/* Error */
 .login-error {
   margin-bottom: 16px;
   padding: 10px 12px;
@@ -69,14 +61,12 @@ body {
   font-size: 13px;
 }
 
-/* Form */
 .login-form {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-/* Field group */
 .login-field-group {
   display: flex;
   flex-direction: column;
@@ -89,7 +79,6 @@ body {
   margin-bottom: 6px;
 }
 
-/* Inputs with icons */
 .login-input-wrapper {
   position: relative;
   width: 100%;
@@ -128,7 +117,6 @@ body {
   box-shadow: 0 0 0 1px rgba(139, 92, 246, 0.7);
 }
 
-/* Right addon button (eye) */
 .login-input-addon-btn {
   position: absolute;
   right: 12px;
@@ -141,7 +129,6 @@ body {
   cursor: pointer;
 }
 
-/* Remember / Forgot row */
 .login-row-between {
   display: flex;
   align-items: center;
@@ -156,17 +143,17 @@ body {
   padding: 11px 16px;
   border-radius: 999px;
   border: none;
-  background: #111827;          /* dark matte blue/gray */
+  background: #111827;          
   color: #f9fafb;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: none;             /* no glow */
+  box-shadow: none;             
   transition: background-color 0.16s ease, transform 0.1s ease;
 }
 
 .login-primary-btn:hover {
-  background: #1f2937;          /* slightly lighter on hover */
+  background: #1f2937;         
   transform: translateY(-1px);
 }
 
@@ -174,7 +161,6 @@ body {
   transform: translateY(0);
 }
 
-/* Divider */
 .login-divider {
   display: flex;
   align-items: center;
@@ -191,7 +177,7 @@ body {
   height: 1px;
   background: #111827;
 }
-/* Bottom text */
+
 .login-bottom-text {
   text-align: center;
   font-size: 13px;
