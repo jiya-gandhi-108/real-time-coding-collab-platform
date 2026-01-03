@@ -1,0 +1,531 @@
+/* ROOT LAYOUT */
+.jr-root {
+  display: flex;
+  min-height: 100vh;
+  background: #0f172a; /* dark navy */
+  color: #e5e7eb;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
+}
+
+/* Top-right container already wraps avatar + menu */
+.jr-topbar-right {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Profile circle (avatar) */
+.jr-profile-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #4a4a4a;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Dropdown menu under the avatar */
+.jr-profile-menu {
+  position: absolute;
+  top: 100%;          /* directly below the profile circle */
+  right: 0;           /* right-align with the avatar */
+  margin-top: 8px;    /* small gap between avatar and menu */
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  padding: 4px 0;
+  z-index: 100;
+  min-width: 120px;
+}
+
+/* Logout button in the dropdown */
+.jr-logout-btn {
+  border: none;
+  background: transparent;
+  padding: 8px 16px;
+  width: 100%;
+  text-align: left;
+  font-size: 14px;
+  color: #333333;
+  cursor: pointer;
+}
+
+.jr-logout-btn:hover {
+  background: #f5f5f5;
+}
+
+/* SIDEBAR */
+.jr-sidebar {
+  width: 230px;
+  background: #020617;
+  color: #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 10px;
+  border-right: 1px solid #111827;
+}
+
+/* logo */
+.jr-logo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px 16px;
+  font-weight: 700;
+  font-size: 20px;
+  color: #38bdf8;
+}
+
+.jr-logo-mark {
+  font-size: 16px;
+}
+
+.jr-logo-text {
+  letter-spacing: 0.5px;
+}
+
+/* nav */
+.jr-nav {
+  margin-top: 12px;
+}
+
+.jr-nav-section-title {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #6b7280;
+  padding: 6px 12px;
+}
+
+.jr-nav-item {
+  width: 100%;
+  text-align: left;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  color: #e5e7eb;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.jr-nav-item:hover {
+  background: #1e293b;
+}
+
+.jr-nav-item-active {
+  background: #1d4ed8;
+}
+
+.jr-nav-bottom {
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid #111827;
+}
+
+/* MAIN AREA */
+.jr-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* TOPBAR */
+.jr-topbar {
+  height: 56px;
+  background: #020617;
+  border-bottom: 1px solid #111827;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 18px;
+}
+
+.jr-topbar-left {
+  display: flex;
+  gap: 10px;
+}
+
+.jr-topbar-link {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  color: #e5e7eb;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.jr-topbar-link:hover {
+  background: #1e293b;
+}
+
+.jr-topbar-link-active {
+  background: #1d4ed8;
+}
+
+.jr-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* simple profile circle */
+.jr-profile-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: #1f2937;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+/* CONTENT */
+.jr-content {
+  flex: 1;
+  padding: 18px 22px;
+  overflow-y: auto;
+}
+
+/* CARDS */
+.jr-card-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.jr-card {
+  background: #020617;
+  border-radius: 12px;
+  border: 1px solid #111827;
+  padding: 18px 16px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.6);
+}
+
+.jr-card-wide {
+  flex: 2;
+  min-width: 280px;
+}
+
+.jr-card-actions {
+  flex: 1;
+  min-width: 220px;
+}
+
+.jr-card-half {
+  flex: 1;
+  min-width: 280px;
+}
+
+.jr-card-title {
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.jr-card-subtitle {
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+
+.jr-card-text {
+  font-size: 13px;
+  color: #9ca3af;
+  margin-bottom: 14px;
+}
+
+/* BUTTONS */
+.jr-primary-btn {
+  margin-top: 6px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(90deg, #2563eb, #4f46e5);
+  color: #e5e7eb;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.jr-primary-btn:hover {
+  opacity: 0.95;
+}
+
+.jr-secondary-btn {
+  padding: 7px 12px;
+  border-radius: 999px;
+  border: 1px solid #374151;
+  background: #020617;
+  color: #e5e7eb;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.jr-secondary-btn:hover {
+  background: #111827;
+}
+
+/* quick actions */
+.jr-action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.jr-action-btn {
+  width: 100%;
+  padding: 7px 10px;
+  border-radius: 8px;
+  border: 1px solid #1f2937;
+  background: #020617;
+  color: #e5e7eb;
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.jr-action-btn:hover {
+  background: #111827;
+}
+
+/* FORM ELEMENTS */
+.jr-form-group {
+  margin-bottom: 10px;
+}
+
+.jr-label {
+  font-size: 13px;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.jr-input {
+  width: 100%;
+  padding: 7px 9px;
+  border-radius: 6px;
+  border: 1px solid #374151;
+  background: #020617;
+  color: #e5e7eb;
+  font-size: 14px;
+}
+
+.jr-input::placeholder {
+  color: #6b7280;
+}
+
+.jr-input:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+/* inline row under create card */
+.jr-form-inline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.jr-generated-id {
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .jr-sidebar {
+    display: none;
+  }
+  .jr-content {
+    padding: 14px;
+  }
+  .jr-card-row {
+    flex-direction: column;
+  }
+}
+/* PROFILE CARD (top of content) */
+.jr-profile-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #020617;
+  border-radius: 14px;
+  border: 1px solid #111827;
+  padding: 12px 18px;
+  margin-bottom: 18px;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.7);
+}
+
+.jr-profile-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: #1f2937;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 600;
+  color: #e5e7eb;
+  margin-right: 12px;
+}
+
+.jr-profile-info {
+  flex: 1;
+}
+
+.jr-profile-name {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.jr-profile-plan {
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+.jr-profile-plan span {
+  color: #e5e7eb;
+}
+
+.jr-profile-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.jr-outline-btn {
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid #4b5563;
+  background: transparent;
+  color: #e5e7eb;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.jr-outline-btn:hover {
+  background: #111827;
+}
+
+.jr-link-btn {
+  background: none;
+  border: none;
+  color: #38bdf8;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.jr-link-btn:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 700px) {
+  .jr-profile-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .jr-profile-actions {
+    align-items: flex-start;
+  }
+}
+/* Meetings / Scheduled Rooms card */
+.jr-card-meetings {
+  flex: 1;
+  min-width: 260px;
+}
+
+.jr-meetings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.jr-meetings-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.jr-meetings-link {
+  font-size: 12px;
+}
+
+.jr-meetings-empty {
+  background: #020617;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 13px;
+  color: #e5e7eb;
+  border: 1px solid #111827;
+  margin-bottom: 10px;
+}
+
+.jr-meetings-test-btn {
+  width: 100%;
+  margin-top: 4px;
+}
+
+/* list of scheduled rooms */
+.jr-meetings-list {
+  max-height: 180px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+
+.jr-meeting-item {
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: #020617;
+  border: 1px solid #111827;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.jr-meeting-title {
+  font-weight: 500;
+}
+
+.jr-meeting-time {
+  color: #9ca3af;
+  font-size: 12px;
+}
+
+/* Recent activity */
+.jr-activity-list {
+  margin-top: 10px;
+}
+
+.jr-activity-item {
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: #020617;
+  border: 1px solid #111827;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.jr-activity-room {
+  margin-bottom: 2px;
+}
+
+.jr-activity-time {
+  color: #9ca3af;
+  font-size: 12px;
+  margin-bottom: 2px;
+}
+
+.jr-activity-files {
+  font-size: 12px;
+}
+
